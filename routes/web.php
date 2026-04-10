@@ -20,5 +20,5 @@ Route::get('/bantuan', function () {
     return view('bantuan');
 });
 Route::get('/', function () {
-    return view('contact');
+    return view('welcome');
 });
