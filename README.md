@@ -3,7 +3,7 @@ NIM : 24.12.3347
 Link : https://eventamikom-3347-main-2sjmpw.free.laravel.cloud/
 
 Tugas 1: https://eventamikom-3347-main-2sjmpw.free.laravel.cloud/profil
-Tugas 2: 
+Tugas 2: <br>
 1. Halaman Dashboard : https://eventamikom-3347-main-2sjmpw.free.laravel.cloud/admin
 2. Halaman Event : https://eventamikom-3347-main-2sjmpw.free.laravel.cloud/admin/events
 3. Halaman Transaksi : https://eventamikom-3347-main-2sjmpw.free.laravel.cloud/admin/transactions
