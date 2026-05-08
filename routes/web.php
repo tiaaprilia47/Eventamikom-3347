@@ -7,8 +7,7 @@ use App\Http\Controllers\TicketController; // Pastikan ini diimport
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\TickerController;
 use App\Http\Controllers\Admin\TransactionController;
-use App\Http\Controllers\Admin\EventController as AdminEventController;
-
+use App\Http\Controllers\Admin\EventController as EventAdminController;
 // Rute User Area
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
@@ -27,14 +26,16 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
 
 
+
 // Rute Admin Area
 Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     // Dashboard
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     
     // Kelola Event
-    Route::get('/events', [AdminEventController::class, 'index'])->name('events.index');
-    
+    //Route::get('/events', [AdminEventController::class, 'index'])->name('events.index');
+     // Event (CRUD lengkap)
+    Route::resource('events', EventAdminController::class);
     // Laporan Transaksi
     Route::get('/transactions', [DashboardController::class, 'transactions'])->name('transactions.index');
 });
