@@ -12,4 +12,5 @@ Tugas 2: <br/>
 6. Halaman Checkout : https://eventamikom-3347-main-2sjmpw.free.laravel.cloud/checkout <br/>
 
 Tugas 3: Menambahkan database migration/seeding<br />
+Tugas 4: Halaman Kelola Event https://eventamikom-3347-main-2sjmpw.free.laravel.cloud/admin/events<br />
 
