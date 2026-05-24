@@ -5,15 +5,29 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\TicketController; // Pastikan ini diimport
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\TickerController;
 use App\Http\Controllers\Admin\TransactionController;
 use App\Http\Controllers\Admin\EventController as EventAdminController;
+use App\Http\Controllers\Admin\PartnerController as PartnerAdminController;
+use App\Http\Controllers\PartnerController;
 // Rute User Area
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/event/1', [EventController::class, 'show'])->name('events.show');
 Route::get('/checkout', [EventController::class, 'checkout'])->name('checkout');
 Route::get('/my-ticket', [TickerController::class, 'show'])->name('ticket');
+
+Route::get('/login', [LoginController::class, 'show'])->name('login');
+Route::post('/login', [LoginController::class, 'login'])->name('login.submit');
+Route::get('/register', [RegisterController::class, 'show'])->name('register');
+Route::post('/register', [RegisterController::class, 'register'])->name('register.submit');
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
+// Public partners listing
+Route::get('/partners', [PartnerController::class, 'index'])->name('partners.index');
 
 // Rute Admin Area
 // Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
@@ -28,7 +42,7 @@ Route::get('/my-ticket', [TickerController::class, 'show'])->name('ticket');
 
 
 // Rute Admin Area
-Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
+Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth']], function () {
     // Dashboard
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     
@@ -36,6 +50,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     //Route::get('/events', [AdminEventController::class, 'index'])->name('events.index');
      // Event (CRUD lengkap)
     Route::resource('events', EventAdminController::class);
+    Route::resource('categories', CategoryController::class);
+    Route::resource('partners', PartnerAdminController::class);
     // Laporan Transaksi
     Route::get('/transactions', [DashboardController::class, 'transactions'])->name('transactions.index');
 });

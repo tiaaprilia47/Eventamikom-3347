@@ -152,4 +152,29 @@
         </div>
     </div>
 </section>
+<!-- Partners & Sponsors -->
+<section class="max-w-7xl mx-auto px-6 py-20">
+    <div class="mb-10 text-center">
+        <h2 class="text-3xl font-extrabold mb-2">Partner & Sponsor</h2>
+        <p class="text-slate-500 font-medium">Mitra kami yang mendukung acara dan platform ini.</p>
+    </div>
+
+    <div class="mx-auto mb-8 w-full max-w-5xl">
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 justify-items-center">
+            @if(!empty($partners) && $partners->count())
+                @foreach($partners as $partner)
+                    <a href="{{ $partner->url ?? '#' }}" target="_blank" class="flex items-center justify-center p-6 bg-white rounded-3xl border border-slate-100 shadow-sm hover:shadow-md transition w-52 h-28">
+                        @if($partner->logo_path)
+                            <img src="{{ asset('storage/'.$partner->logo_path) }}" alt="{{ $partner->name }}" class="max-h-20 w-full object-contain">
+                        @else
+                            <div class="text-slate-500 font-semibold text-center">{{ $partner->name }}</div>
+                        @endif
+                    </a>
+                @endforeach
+            @else
+                <div class="col-span-4 text-slate-500 text-center">Belum ada partner yang ditambahkan.</div>
+            @endif
+        </div>
+    </div>
+</section>
 @endsection
