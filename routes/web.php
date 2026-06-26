@@ -23,7 +23,8 @@ Route::get('/my-ticket', [TickerController::class, 'show'])->name('ticket');
 // Rute Prosedur Checkout
 Route::get('/checkout/{event}', [CheckoutController::class, 'create'])->name('checkout.create');
 Route::post('/checkout/{event}', [CheckoutController::class, 'store'])->name('checkout.store');
-
+Route::get('/payment/{order_id}', [\App\Http\Controllers\CheckoutController::class, 'payment'])->name('checkout.payment');
+Route::get('/success/{order_id}', [\App\Http\Controllers\CheckoutController::class, 'success'])->name('checkout.success');
 // Otentikasi
 Route::get('/login', [LoginController::class, 'show'])->name('login');
 Route::post('/login', [LoginController::class, 'login'])->name('login.submit');
