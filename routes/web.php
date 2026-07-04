@@ -19,6 +19,7 @@ use App\Http\Controllers\CheckoutController; // Pastikan ini diimport
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/event/{event}', [EventController::class, 'show'])->name('events.show'); // Diubah agar dinamis menggunakan ID/slug event
 Route::get('/my-ticket', [TickerController::class, 'show'])->name('ticket');
+Route::post('/midtrans/callback', [\App\Http\Controllers\MidtransWebhookController::class, 'handle']);
 
 // Rute Prosedur Checkout
 Route::get('/checkout/{event}', [CheckoutController::class, 'create'])->name('checkout.create');
